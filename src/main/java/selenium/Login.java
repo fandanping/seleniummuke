@@ -1,11 +1,10 @@
 package selenium;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import java.io.File;
-import java.text.SimpleDateFormat;
+import selenium.Utils.ProUtil;
+
 import java.util.*;
 
 @Listeners({TestngListenerScreenShot.class})
