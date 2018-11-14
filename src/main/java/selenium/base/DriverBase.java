@@ -48,11 +48,18 @@ public class DriverBase {
     }
 
     /*
-     * 返回
+     * 通过历史导航返回原页面
      *
      * */
     public void back() {
         driver.navigate().back();
+    }
+
+    /**
+     * 通过历史导航前进
+     */
+    public void forword(){
+        driver.navigate().forward();
     }
     /*
     * 刷新
@@ -100,6 +107,7 @@ public class DriverBase {
         Actions action =new Actions(driver);
         action.moveToElement(element).perform();
     }
+    //##############################################cookie管理 start ###################################################
     /**
      * 获取cookcie
      * @return
@@ -108,12 +116,29 @@ public class DriverBase {
         Set<Cookie> cookies = driver.manage().getCookies();
         return cookies;
     }
-
     /**
-     * 删除cookie
+     * 根据某个cookie的name获取cookie的值
+     */
+    public Cookie getCookieBuName(String name){
+        return driver.manage().getCookieNamed(name);
+    }
+    /**
+     * 删除所有cookie
      * */
     public void deleteCookie(){
         driver.manage().deleteAllCookies();
+    }
+    /**
+     * 通过name 删除cookie
+     */
+    public void deleteCookieNamed(String name){
+        driver.manage().deleteCookieNamed(name);
+    }
+    /**
+     * 通过cookie删除cookie
+     */
+    public void deleteCookieByCookie(Cookie cookie){
+        driver.manage().deleteCookie(cookie);
     }
     /**
      * 设置cookie
@@ -121,6 +146,8 @@ public class DriverBase {
     public void setCookie(Cookie cookie){
         driver.manage().addCookie(cookie);
     }
+    //##############################################cookie管理 end ###################################################
+
     /**
      * 获取当前系统窗口list
      * */

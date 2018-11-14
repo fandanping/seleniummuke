@@ -1,11 +1,14 @@
 package selenium.page;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import selenium.base.DriverBase;
 
+import java.util.List;
+
 /**
- * 页面基类
+ * 页面基类:对页面元素基本操作进行封装，简化操作
  */
 public class BasePages {
     //把DriverBase中封装好的driver拿过来
@@ -69,9 +72,47 @@ public class BasePages {
      * 获取文本信息
      */
      public String getText(WebElement element){
-         return element.getText();
+         try {
+             return element.getText();
+         }catch(NoSuchElementException e){
+             return "Text not existed!";
+         }
      }
-
-
-
+    /**
+     * 判断元素是否存在
+     */
+    public boolean isWebElementExist(By by){
+         try{
+              element(by);
+              return true;
+         }catch(NoSuchElementException e){
+             return  false;
+         }
+    }
+    /**
+     * 元素包含指定文本，进行点击
+     */
+    public void clickElementContainingText(By by ,String text){
+        List<WebElement> elementList=driver.findElements(by);
+        for(WebElement e:elementList){
+             if(e.getText().contains(text)){
+                  e.click();
+                  break;
+             }
+        }
+    }
+    /**
+     * 返回链接包含指定文档的href
+     */
+     public String getLinkUrlContainingText(By by,String text){
+         List<WebElement>subscribeButton = driver.findElements(by);
+         String url = null;
+         for(WebElement e:subscribeButton){
+             if(e.getText().contains(text)){
+                 url =e.getAttribute("href");
+                 break;
+             }
+         }
+         return url;
+     }
 }
