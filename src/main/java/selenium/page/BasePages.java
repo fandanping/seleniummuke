@@ -25,6 +25,16 @@ public class BasePages {
         WebElement ele=driver.findElement(by);
         return ele;
     }
+
+    /**
+     * 层级定位 通过父节点定位到子节点
+     * 需要传入父节点,子节点的by
+     */
+     public WebElement nodeElement(By by,By nodeBy){
+         WebElement el=this.element(by).findElement(nodeBy);
+         return el;
+     }
+
     /*
    * 封装click（点击）方法
    * 需要传入一个WebElement类型的元素
@@ -55,6 +65,13 @@ public class BasePages {
     public boolean assertElementIs(WebElement element) {
         return element.isDisplayed();
     }
+    /**
+     * 获取文本信息
+     */
+     public String getText(WebElement element){
+         return element.getText();
+     }
+
 
 
 }

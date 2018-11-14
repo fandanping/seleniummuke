@@ -1,4 +1,4 @@
-package selenium;
+package testng2;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Listeners;

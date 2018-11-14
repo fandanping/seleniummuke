@@ -49,6 +49,20 @@ public class ProUtil {
             return "";
         }
     }
+    /**
+     * 写入内容
+     * */
+    public void writePro(String key,String value){
+        Properties pro = new Properties();
+        try {
+            FileOutputStream file = new FileOutputStream(filePath);
+            pro.setProperty(key, value);
+            pro.store(file, key);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
 
 }

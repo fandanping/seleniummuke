@@ -1,4 +1,4 @@
-package selenium;
+package testng2;
 
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;

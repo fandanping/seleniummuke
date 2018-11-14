@@ -1,9 +1,9 @@
-package selenium;
+package testng2;
 
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
-import selenium.BaseDriver;
+
 public class TestngListenerScreenShot  extends TestListenerAdapter {
     @Override
     public void onTestSuccess(ITestResult tr) {
